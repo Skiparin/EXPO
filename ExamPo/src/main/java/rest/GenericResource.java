@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import javax.json.Json;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -34,7 +35,7 @@ import org.json.JSONObject;
 public class GenericResource {
 
     private static final Gson gson = new Gson();
-    
+
     @Context
     private UriInfo context;
 
@@ -47,29 +48,44 @@ public class GenericResource {
     /**
      * Retrieves representation of an instance of rest.GenericResource
      *
+     * @param FROM
+     * @param DATE
+     * @param TICKETS
      * @return an instance of java.lang.String
      */
     @GET
-    @Path("{from}/{date}/{seats}")
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("{from}/{date}/{tickets}")
     @Produces(MediaType.TEXT_PLAIN)
-    public String getFlight() {
-              JsonObject json = new JsonParser().parse(jsonString).getAsJsonObject();
-              return "";
+    public String getFlightFrom(@PathParam("from") String FROM, @PathParam("date") String DATE,
+            @PathParam("tickets") int TICKETS) {
+        Facade facade = new Facade();
+        List<Flight> flights = facade.getFlightByOrigin(FROM, DATE, TICKETS);
+        String jsonFlight = gson.toJson(flights);
+        return jsonFlight;
+    }
+
+    @GET
+    @Path("{from}/{to}/{date}/{tickets}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getFlightFromTo(@PathParam("from") String FROM, @PathParam("to") String TO, @PathParam("date") String DATE,
+            @PathParam("tickets") int TICKETS) {
+        Facade facade = new Facade();
+        List<Flight> flights = facade.getFlight(FROM, TO, DATE, TICKETS);
+        String flight = gson.toJson(flights);
+        return flight;
     }
 
     @GET
     @Produces(MediaType.TEXT_HTML)
     @Path("/todo/{from}/{to}/{date}/{persons}")
-    public String getFlights( @PathParam("from") String FROM, @PathParam("to") String TO,
-                              @PathParam("date") String DATE, @PathParam("persons") String PERSONS) {
+    public String getFlights(@PathParam("from") String FROM, @PathParam("to") String TO,
+            @PathParam("date") String DATE, @PathParam("persons") String PERSONS) {
         String reply = "";
         try {
             DefaultHttpClient httpClient = new DefaultHttpClient();
             String test = "http://airline-plaul.rhcloud.com/api/flightinfo/" + FROM + "/" + TO + "/" + DATE + "/" + PERSONS;
             System.out.println(test);
             HttpGet GetRequest = new HttpGet(test);
-            
 
             HttpResponse response = httpClient.execute(GetRequest);
 
