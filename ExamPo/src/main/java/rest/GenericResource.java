@@ -5,10 +5,14 @@
  */
 package rest;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
+import javax.json.Json;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -20,15 +24,18 @@ import javax.ws.rs.core.MediaType;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONObject;
 
 /**
  * REST Web Service
  *
  * @author Orvur
  */
-@Path("/flight")
+@Path("flight")
 public class GenericResource {
 
+    private static final Gson gson = new Gson();
+    
     @Context
     private UriInfo context;
 
@@ -44,10 +51,12 @@ public class GenericResource {
      * @return an instance of java.lang.String
      */
     @GET
+    @Path("{from}/{date}/{seats}")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public String getXml() {
-        //TODO return proper representation object
-        return "hye";
+    public String getFlight() {
+              JsonObject json = new JsonParser().parse(jsonString).getAsJsonObject();
+              return "";
     }
 
     @GET
