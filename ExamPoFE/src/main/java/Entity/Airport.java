@@ -6,10 +6,12 @@
 package Entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -17,6 +19,7 @@ import javax.persistence.Id;
  */
 @Entity
 public class Airport implements Serializable {
+
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -27,6 +30,8 @@ public class Airport implements Serializable {
     private String name;
     private String country;
     private String city;
+    @OneToMany(mappedBy = "airport")
+    private List<Flight> flights;
     
     public String getId() {
         return id;

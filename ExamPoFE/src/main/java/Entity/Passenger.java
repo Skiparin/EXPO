@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -24,6 +25,8 @@ public class Passenger implements Serializable {
     private String id;
     private String firstName;
     private String lastName;
+    @ManyToOne
+    private Reservation reservation;
     
     public String getId() {
         return id;

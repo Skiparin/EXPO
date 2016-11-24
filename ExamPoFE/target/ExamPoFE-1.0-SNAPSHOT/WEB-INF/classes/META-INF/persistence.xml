@@ -4,6 +4,10 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Entity.Flight</class>
     <class>Entity.Reservation</class>
+    <class>Entity.Airline</class>
+    <class>Entity.Airport</class>
+    <class>Entity.FlightInstance</class>
+    <class>Entity.Passenger</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ca2?zeroDateTimeBehavior=convertToNull"/>

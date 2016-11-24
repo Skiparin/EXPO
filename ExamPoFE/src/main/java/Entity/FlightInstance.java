@@ -6,10 +6,13 @@
 package Entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -17,6 +20,7 @@ import javax.persistence.Id;
  */
 @Entity
 public class FlightInstance implements Serializable {
+
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -26,6 +30,10 @@ public class FlightInstance implements Serializable {
     private String time;
     private String avaiableSeats;
     private int price;
+    @ManyToOne
+    private Flight flight;
+    @OneToMany(mappedBy = "flightInstance")
+    private List<Reservation> reservation;
     
     public String getId() {
         return id;
