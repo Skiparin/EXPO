@@ -30,8 +30,15 @@ public class Airport implements Serializable {
     private String name;
     private String country;
     private String city;
-    @OneToMany(mappedBy = "airport")
-    private List<Flight> flights;
+    @OneToMany(mappedBy = "Airport")
+    private List<Flight> flightFrom;
+    @OneToMany(mappedBy = "Airport")
+    private List<Flight> flightTo;
+
+    public Airport() {
+    }
+
+    
     
     public String getId() {
         return id;
@@ -80,6 +87,23 @@ public class Airport implements Serializable {
     public void setCity(String city) {
         this.city = city;
     }
+
+    public List<Flight> getFlightFrom() {
+        return flightFrom;
+    }
+
+    public void setFlightFrom(List<Flight> flightFrom) {
+        this.flightFrom = flightFrom;
+    }
+
+    public List<Flight> getFlightTo() {
+        return flightTo;
+    }
+
+    public void setFlightTo(List<Flight> flightTo) {
+        this.flightTo = flightTo;
+    }
+    
     
     
     

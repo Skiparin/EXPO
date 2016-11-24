@@ -32,7 +32,7 @@ public class Flight implements Serializable {
     @ManyToOne
     private Airline airline;
     @ManyToOne
-    private Airport to;
+    private Airport Airport;
     @ManyToOne
     private Airport from;
     @OneToMany(mappedBy = "flight")

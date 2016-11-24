@@ -49,7 +49,4 @@ public class Reservation implements Serializable {
         this.totalPrice = totalPrice;
     }
     
-    
-    
-    
 }
