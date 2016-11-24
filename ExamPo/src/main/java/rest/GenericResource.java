@@ -15,11 +15,10 @@ import java.net.MalformedURLException;
 import javax.json.Json;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PUT;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -61,11 +60,16 @@ public class GenericResource {
 
     @GET
     @Produces(MediaType.TEXT_HTML)
-    public String getFlights() {
+    @Path("/todo/{from}/{to}/{date}/{persons}")
+    public String getFlights( @PathParam("from") String FROM, @PathParam("to") String TO,
+                              @PathParam("date") String DATE, @PathParam("persons") String PERSONS) {
         String reply = "";
         try {
             DefaultHttpClient httpClient = new DefaultHttpClient();
-            HttpGet GetRequest = new HttpGet("http://airline-plaul.rhcloud.com/api/flightinfo/SXF/2017-01-01T00:00:00.000Z/1");
+            String test = "http://airline-plaul.rhcloud.com/api/flightinfo/" + FROM + "/" + TO + "/" + DATE + "/" + PERSONS;
+            System.out.println(test);
+            HttpGet GetRequest = new HttpGet(test);
+            
 
             HttpResponse response = httpClient.execute(GetRequest);
 
