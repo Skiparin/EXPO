@@ -16,18 +16,15 @@ import javax.persistence.Id;
  * @author Thesoap
  */
 @Entity
-public class Flight implements Serializable {
+public class Passenger implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
-    private String flightNumber;
-    private int numberOfSeats;
-    private int flightTime;
+    private String firstName;
+    private String lastName;
     
-    private Airport airport;
-
     public String getId() {
         return id;
     }
@@ -36,30 +33,21 @@ public class Flight implements Serializable {
         this.id = id;
     }
 
-    public String getFlightNumber() {
-        return flightNumber;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFlightNumber(String flightNumber) {
-        this.flightNumber = flightNumber;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public int getNumberOfSeats() {
-        return numberOfSeats;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setNumberOfSeats(int numberOfSeats) {
-        this.numberOfSeats = numberOfSeats;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public int getFlightTime() {
-        return flightTime;
-    }
-
-    public void setFlightTime(int flightTime) {
-        this.flightTime = flightTime;
-    }
-    
-    
     
 }
