@@ -1,0 +1,8 @@
+rest\FlightResource.class
+Entity\Flight.class
+Entity\passenger_.class
+Entity\Flight_.class
+rest\ApplicationConfig.class
+Entity\passenger.class
+Entity\Reservation_.class
+Entity\Reservation.class
