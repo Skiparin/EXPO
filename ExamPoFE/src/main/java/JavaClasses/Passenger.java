@@ -3,36 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Entity;
-
-import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+package JavaClasses;
 
 /**
  *
  * @author Thesoap
  */
-@Entity
-public class passenger implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+public class Passenger {
     private String firstName;
     private String lastName;
 
-    public String getId() {
-        return id;
+    public Passenger(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
+    
     public String getFirstName() {
         return firstName;
     }
@@ -48,5 +33,6 @@ public class passenger implements Serializable {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
+    
+    
 }

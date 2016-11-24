@@ -5,6 +5,7 @@
  */
 package Entity;
 
+import JavaClasses.Passenger;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
@@ -27,7 +28,7 @@ public class Reservation implements Serializable {
     private String reserveeName;
     private String reserveePhone;
     private String reserveeEmail;
-    private List<passenger> passenger;
+    private List<Passenger> passenger;
 
     public String getId() {
         return id;
@@ -69,13 +70,14 @@ public class Reservation implements Serializable {
         this.reserveeEmail = reserveeEmail;
     }
 
-    public List<passenger> getPassenger() {
+    public List<Passenger> getPassenger() {
         return passenger;
     }
 
-    public void setPassenger(List<passenger> passenger) {
+    public void setPassenger(List<Passenger> passenger) {
         this.passenger = passenger;
     }
+    
     
     
 }
