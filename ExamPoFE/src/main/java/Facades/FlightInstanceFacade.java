@@ -5,10 +5,28 @@
  */
 package Facades;
 
+import Entity.FlightInstance;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 /**
  *
  * @author Oliver
  */
 public class FlightInstanceFacade {
     
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("FlightDB_PU");
+
+    public FlightInstance addFlightInstance(FlightInstance flightinstance) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(flightinstance);
+            em.getTransaction().commit();
+            return flightinstance;
+        } finally {
+            em.close();
+        }
+    }
 }
