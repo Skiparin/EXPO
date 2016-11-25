@@ -18,7 +18,7 @@ public class ReservationFacade {
     
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("FlightDB_PU");
 
-    public Reservation addAirport(Reservation reservation) {
+    public Reservation addReservation(Reservation reservation) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
