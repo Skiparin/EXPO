@@ -6,6 +6,7 @@
 package rest;
 
 import Entity.Flight;
+import Facades.ReservationFacade;
 import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -17,6 +18,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import com.google.gson.Gson;
 import javax.persistence.Persistence;
+import javax.ws.rs.Consumes;
 
 
 /**
@@ -28,7 +30,6 @@ import javax.persistence.Persistence;
 public class FlightResource {
 
     private static final Gson gson = new Gson();
-    private Facade facade = new Facade(Persistence.createEntityManagerFactory("FlightDB_PU"));
 
     @Context
     private UriInfo context;
@@ -52,6 +53,7 @@ public class FlightResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String getFlightFrom(@PathParam("from") String FROM, @PathParam("date") String DATE,
             @PathParam("tickets") int TICKETS) {
+        Facade facade = new Facade();
         List<Flight> flights = facade.getFlightByOrigin(FROM, DATE, TICKETS);
         String jsonFlight = gson.toJson(flights);
         return jsonFlight;
@@ -62,17 +64,20 @@ public class FlightResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String getFlightFromTo(@PathParam("from") String FROM, @PathParam("to") String TO, @PathParam("date") String DATE,
             @PathParam("tickets") int TICKETS) {
+        Facade facade = new Facade();
         List<Flight> flights = facade.getFlight(FROM, TO, DATE, TICKETS);
         String flight = gson.toJson(flights);
         return flight;
     }
 
     @POST
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("flightId")
-    public int ReserveFlight(@PathParam("id") int id) {
-        flightId fId = facade.getFlightById(id);
-        gson.toJson(fId);
-        return fId;
+    public Object ReserveFlight(@PathParam("id") int id) {
+        ReservationFacade resFacade = new ReservationFacade();
+        Flight flightId = gson.fromJson(resFacade.addReservation(id), Flight.class);
+        gson.toJson(flightId);
+        return flightId;
     }
 }
