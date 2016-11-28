@@ -52,15 +52,12 @@ public class GenericResource {
     @GET
     @Produces(MediaType.TEXT_HTML)
     @Path("/todo/{from}/{to}/{date}/{persons}")
-    public String getFlights( @PathParam("from") String FROM, @PathParam("to") String TO,
-                              @PathParam("date") String DATE, @PathParam("persons") String PERSONS) {
-        String reply = "";
+    public String getFlights(@PathParam("from") String FROM, @PathParam("to") String TO,
+            @PathParam("date") String DATE, @PathParam("persons") String PERSONS) {
+        String json = "";
         try {
             DefaultHttpClient httpClient = new DefaultHttpClient();
-            String test = "http://airline-plaul.rhcloud.com/api/flightinfo/" + FROM + "/" + TO + "/" + DATE + "/" + PERSONS;
-            System.out.println(test);
-            HttpGet GetRequest = new HttpGet(test);
-            
+            HttpGet GetRequest = new HttpGet("http://airline-plaul.rhcloud.com/api/flightinfo/" + FROM + "/" + TO + "/" + DATE + "/" + PERSONS);
 
             HttpResponse response = httpClient.execute(GetRequest);
 
@@ -68,14 +65,40 @@ public class GenericResource {
                     new InputStreamReader((response.getEntity().getContent())));
 
             String output;
-            String json = "";
-            System.out.println("Output from Server .... \n");
             while ((output = br.readLine()) != null) {
                 json = json.concat(output);
                 System.out.println(json);
             }
-            System.out.println(json);
-            reply = json;
+            httpClient.getConnectionManager().shutdown();
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return json;
+    }
+
+    @GET
+    @Produces(MediaType.TEXT_HTML)
+    @Path("/todo/{from}/{date}/{persons}")
+    public String getFlights(@PathParam("from") String FROM, @PathParam("date") String DATE,
+            @PathParam("persons") String PERSONS) {
+        String json = "";
+        try {
+            DefaultHttpClient httpClient = new DefaultHttpClient();
+            HttpGet GetRequest = new HttpGet("http://airline-plaul.rhcloud.com/api/flightinfo/" + FROM + "/" + DATE + "/" + PERSONS);
+
+            HttpResponse response = httpClient.execute(GetRequest);
+
+            BufferedReader br = new BufferedReader(
+                    new InputStreamReader((response.getEntity().getContent())));
+
+            String output;
+            while ((output = br.readLine()) != null) {
+                json = json.concat(output);
+                System.out.println(json);
+            }
             httpClient.getConnectionManager().shutdown();
 
         } catch (MalformedURLException e) {
@@ -87,6 +110,6 @@ public class GenericResource {
             e.printStackTrace();
 
         }
-        return reply;
+        return json;
     }
 }
