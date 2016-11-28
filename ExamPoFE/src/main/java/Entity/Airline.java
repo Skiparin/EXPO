@@ -50,7 +50,11 @@ public class Airline implements Serializable {
         return flights;
     }
 
+<<<<<<< HEAD
     public void setFlights(Flight flight) {
+=======
+    public void setFlights(List<Flight> flights) {
+>>>>>>> 2d0d80b999e4982c3a656b5d660052f882be5390
         this.flights = flights;
     }
     
