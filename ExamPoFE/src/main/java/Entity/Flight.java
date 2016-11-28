@@ -23,8 +23,8 @@ public class Flight implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String flightNumber;
     private int numberOfSeats;
     private int flightTime;
@@ -39,11 +39,11 @@ public class Flight implements Serializable {
     private List<FlightInstance> flightInstance;
     
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
