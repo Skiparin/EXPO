@@ -6,32 +6,27 @@
 package Entity;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  *
  * @author Thesoap
  */
 @Entity
-public class Reservation implements Serializable {
-
-
+public class Passenger implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
-    private int totalPrice;
+    private String firstName;
+    private String lastName;
     @ManyToOne
-    private FlightInstance flightInstance;
-    @OneToMany(mappedBy = "reservation")
-    private List<Passenger> passengers;
+    private Reservation reservation;
     
     public String getId() {
         return id;
@@ -41,12 +36,21 @@ public class Reservation implements Serializable {
         this.id = id;
     }
 
-    public int getTotalPrice() {
-        return totalPrice;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setTotalPrice(int totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     
 }

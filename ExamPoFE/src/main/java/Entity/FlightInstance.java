@@ -19,26 +19,22 @@ import javax.persistence.OneToMany;
  * @author Thesoap
  */
 @Entity
-public class Flight implements Serializable {
+public class FlightInstance implements Serializable {
+
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
-    private String flightNumber;
-    private int numberOfSeats;
-    private int flightTime;
+    private String date;
+    private String time;
+    private String avaiableSeats;
+    private int price;
+    @ManyToOne
+    private Flight flight;
+    @OneToMany(mappedBy = "flightInstance")
+    private List<Reservation> reservation;
     
-    @ManyToOne
-    private Airline airline;
-    @ManyToOne
-    private Airport Airport;
-    @ManyToOne
-    private Airport from;
-    @OneToMany(mappedBy = "flight")
-    private List<FlightInstance> flightInstance;
-    
-
     public String getId() {
         return id;
     }
@@ -47,30 +43,37 @@ public class Flight implements Serializable {
         this.id = id;
     }
 
-    public String getFlightNumber() {
-        return flightNumber;
+    public String getDate() {
+        return date;
     }
 
-    public void setFlightNumber(String flightNumber) {
-        this.flightNumber = flightNumber;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public int getNumberOfSeats() {
-        return numberOfSeats;
+    public String getTime() {
+        return time;
     }
 
-    public void setNumberOfSeats(int numberOfSeats) {
-        this.numberOfSeats = numberOfSeats;
+    public void setTime(String time) {
+        this.time = time;
     }
 
-    public int getFlightTime() {
-        return flightTime;
+    public String getAvaiableSeats() {
+        return avaiableSeats;
     }
 
-    public void setFlightTime(int flightTime) {
-        this.flightTime = flightTime;
+    public void setAvaiableSeats(String avaiableSeats) {
+        this.avaiableSeats = avaiableSeats;
     }
-    
-    
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     
 }
