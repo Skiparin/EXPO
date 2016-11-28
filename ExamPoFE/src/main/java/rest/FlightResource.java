@@ -72,6 +72,7 @@ public class FlightResource {
     @Path("flightId")
     public int ReserveFlight(@PathParam("id") int id) {
         flightId fId = facade.getFlightById(id);
+        gson.toJson(fId);
         return fId;
     }
 }

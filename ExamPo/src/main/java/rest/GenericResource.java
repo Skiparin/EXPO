@@ -42,36 +42,6 @@ public class GenericResource {
     public GenericResource() {
     }
 
-    /**
-     * Retrieves representation of an instance of rest.GenericResource
-     *
-     * @param FROM
-     * @param DATE
-     * @param TICKETS
-     * @return an instance of java.lang.String
-     */
-    @GET
-    @Path("{from}/{date}/{tickets}")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String getFlightFrom(@PathParam("from") String FROM, @PathParam("date") String DATE,
-            @PathParam("tickets") int TICKETS) {
-        Facade facade = new Facade();
-        List<Flight> flights = facade.getFlightByOrigin(FROM, DATE, TICKETS);
-        String jsonFlight = gson.toJson(flights);
-        return jsonFlight;
-    }
-
-    @GET
-    @Path("{from}/{to}/{date}/{tickets}")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String getFlightFromTo(@PathParam("from") String FROM, @PathParam("to") String TO, @PathParam("date") String DATE,
-            @PathParam("tickets") int TICKETS) {
-        Facade facade = new Facade();
-        List<Flight> flights = facade.getFlight(FROM, TO, DATE, TICKETS);
-        String flight = gson.toJson(flights);
-        return flight;
-    }
-
     @GET
     @Produces(MediaType.TEXT_HTML)
     @Path("/todo/{from}/{to}/{date}/{persons}")
@@ -136,12 +106,4 @@ public class GenericResource {
         return json;
     }
 
-    @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("flightId")
-    public int ReserveFlight(@PathParam("id") int id) {
-        Facade facade = new Facade();
-        flightId fId = facade.getFlightById(id);
-        return fId;
-    }
 }
