@@ -25,19 +25,19 @@ public class Reservation implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private int totalPrice;
     @ManyToOne
     private FlightInstance flightInstance;
     @OneToMany(mappedBy = "reservation")
     private List<Passenger> passengers;
     
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

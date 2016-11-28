@@ -1,20 +1,24 @@
 package Entity;
 
+import Entity.Airline;
+import Entity.Airport;
+import Entity.FlightInstance;
 import javax.annotation.Generated;
+import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-11-23T13:37:37")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-11-28T12:08:49")
 @StaticMetamodel(Flight.class)
 public class Flight_ { 
 
-    public static volatile SingularAttribute<Flight, String> date;
-    public static volatile SingularAttribute<Flight, String> Destination;
     public static volatile SingularAttribute<Flight, Integer> numberOfSeats;
-    public static volatile SingularAttribute<Flight, Integer> travelTime;
-    public static volatile SingularAttribute<Flight, Integer> totalPrice;
-    public static volatile SingularAttribute<Flight, String> origin;
-    public static volatile SingularAttribute<Flight, String> FlightNumber;
+    public static volatile SingularAttribute<Flight, Airport> Airport;
+    public static volatile SingularAttribute<Flight, Airport> from;
+    public static volatile ListAttribute<Flight, FlightInstance> flightInstance;
     public static volatile SingularAttribute<Flight, String> id;
+    public static volatile SingularAttribute<Flight, Integer> flightTime;
+    public static volatile SingularAttribute<Flight, Airline> airline;
+    public static volatile SingularAttribute<Flight, String> flightNumber;
 
 }

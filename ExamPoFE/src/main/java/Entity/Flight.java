@@ -23,8 +23,8 @@ public class Flight implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String flightNumber;
     private int numberOfSeats;
     private int flightTime;
@@ -32,18 +32,18 @@ public class Flight implements Serializable {
     @ManyToOne
     private Airline airline;
     @ManyToOne
-    private Airport Airport;
+    private Airport destination;
     @ManyToOne
-    private Airport from;
+    private Airport origin;
     @OneToMany(mappedBy = "flight")
     private List<FlightInstance> flightInstance;
     
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -69,6 +69,38 @@ public class Flight implements Serializable {
 
     public void setFlightTime(int flightTime) {
         this.flightTime = flightTime;
+    }
+
+    public Airline getAirline() {
+        return airline;
+    }
+
+    public void setAirline(Airline airline) {
+        this.airline = airline;
+    }
+
+    public Airport getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Airport destination) {
+        this.destination = destination;
+    }
+
+    public Airport getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(Airport origin) {
+        this.origin = origin;
+    }
+
+    public List<FlightInstance> getFlightInstance() {
+        return flightInstance;
+    }
+
+    public void setFlightInstance(List<FlightInstance> flightInstance) {
+        this.flightInstance = flightInstance;
     }
     
     

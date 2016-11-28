@@ -47,10 +47,7 @@ public class FlightResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String getFlightFrom(@PathParam("from") String FROM, @PathParam("date") String DATE,
             @PathParam("tickets") int TICKETS) {
-        Facade facade = new Facade();
-        List<Flight> flights = facade.getFlightByOrigin(FROM, DATE, TICKETS);
-        String jsonFlight = gson.toJson(flights);
-        return jsonFlight;
+        return null;
     }
 
     @GET
@@ -58,18 +55,13 @@ public class FlightResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String getFlightFromTo(@PathParam("from") String FROM, @PathParam("to") String TO, @PathParam("date") String DATE,
             @PathParam("tickets") int TICKETS) {
-        Facade facade = new Facade();
-        List<Flight> flights = facade.getFlight(FROM, TO, DATE, TICKETS);
-        String flight = gson.toJson(flights);
-        return flight;
+        return null;
     }
-    
+
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Path("flightId")
     public int ReserveFlight(@PathParam("id") int id) {
-        Facade facade = new Facade();
-        flightId fId = facade.getFlightById(id);
-        return fId;
+        return 1;
     }
 }
