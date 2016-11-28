@@ -5,10 +5,15 @@
  */
 package rest;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
+import javax.json.Json;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -19,14 +24,17 @@ import javax.ws.rs.core.MediaType;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONObject;
 
 /**
  * REST Web Service
  *
  * @author Orvur
  */
-@Path("/flight")
+@Path("flight")
 public class GenericResource {
+
+    private static final Gson gson = new Gson();
 
     @Context
     private UriInfo context;
@@ -40,13 +48,31 @@ public class GenericResource {
     /**
      * Retrieves representation of an instance of rest.GenericResource
      *
+     * @param FROM
+     * @param DATE
+     * @param TICKETS
      * @return an instance of java.lang.String
      */
     @GET
+    @Path("{from}/{date}/{tickets}")
     @Produces(MediaType.TEXT_PLAIN)
-    public String getXml() {
-        //TODO return proper representation object
-        return "hye";
+    public String getFlightFrom(@PathParam("from") String FROM, @PathParam("date") String DATE,
+            @PathParam("tickets") int TICKETS) {
+        Facade facade = new Facade();
+        List<Flight> flights = facade.getFlightByOrigin(FROM, DATE, TICKETS);
+        String jsonFlight = gson.toJson(flights);
+        return jsonFlight;
+    }
+
+    @GET
+    @Path("{from}/{to}/{date}/{tickets}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getFlightFromTo(@PathParam("from") String FROM, @PathParam("to") String TO, @PathParam("date") String DATE,
+            @PathParam("tickets") int TICKETS) {
+        Facade facade = new Facade();
+        List<Flight> flights = facade.getFlight(FROM, TO, DATE, TICKETS);
+        String flight = gson.toJson(flights);
+        return flight;
     }
 
     @GET
