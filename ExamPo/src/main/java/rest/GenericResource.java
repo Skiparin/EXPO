@@ -6,25 +6,22 @@
 package rest;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
-import javax.json.Json;
-import javax.ws.rs.Consumes;
+import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONObject;
 
 /**
  * REST Web Service
@@ -113,5 +110,14 @@ public class GenericResource {
 
         }
         return reply;
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("flightId")
+    public int ReserveFlight(@PathParam("id") int id) {
+        Facade facade = new Facade();
+        flightId fId = facade.getFlightById(id);
+        return fId;
     }
 }
