@@ -2,15 +2,13 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="FlightDB_PU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>Entity.Airline</class>
-    <class>Entity.Airport</class>
-    <class>Entity.Flight</class>
-    <class>Entity.FlightInstance</class>
-    <class>Entity.Passenger</class>
-    <class>Entity.Reservation</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
+<<<<<<< HEAD
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Airline?zeroDateTimeBehavior=convertToNull"/>
+=======
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/exampo?zeroDateTimeBehavior=convertToNull"/>
+>>>>>>> cf740000dc9024734fbab57f398d847ace33c891
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value=""/>
