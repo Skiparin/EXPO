@@ -1,2 +1,9 @@
 /ExamPo/target/
+<<<<<<< HEAD
 /ExamPoFE/nbproject/
+=======
+/ExamApi/target/
+/mavenproject1/target/
+/api/nbproject/
+/api/target/
+>>>>>>> fcc579427c1f5a264dfb1e600a821e9c4d77a896

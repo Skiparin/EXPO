@@ -5,13 +5,16 @@
  */
 package rest;
 
+import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -32,13 +35,33 @@ public class FlightResource {
     }
 
     /**
-     * Retrieves representation of an instance of rest.FlightResource
+     * Retrieves representation of an instance of rest.GenericResource
+     *
+     * @param FROM
+     * @param DATE
+     * @param TICKETS
      * @return an instance of java.lang.String
      */
     @GET
-    @Path("hej")
+    @Path("{from}/{date}/{tickets}")
     @Produces(MediaType.TEXT_PLAIN)
-    public String getXml() {
-        return "hej";
+    public String getFlightFrom(@PathParam("from") String FROM, @PathParam("date") String DATE,
+            @PathParam("tickets") int TICKETS) {
+        return null;
+    }
+
+    @GET
+    @Path("{from}/{to}/{date}/{tickets}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getFlightFromTo(@PathParam("from") String FROM, @PathParam("to") String TO, @PathParam("date") String DATE,
+            @PathParam("tickets") int TICKETS) {
+        return null;
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("flightId")
+    public int ReserveFlight(@PathParam("id") int id) {
+        return 1;
     }
 }
