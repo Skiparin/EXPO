@@ -99,7 +99,7 @@ public class Flight implements Serializable {
         return flightInstance;
     }
 
-    public void setFlightInstance(List<FlightInstance> flightInstance) {
+    public void setFlightInstance(FlightInstance flightinstance) {
         this.flightInstance = flightInstance;
     }
     

@@ -5,6 +5,7 @@
  */
 package Facades;
 
+import Entity.Flight;
 import Entity.FlightInstance;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -15,8 +16,8 @@ import javax.persistence.Persistence;
  * @author Oliver
  */
 public class FlightInstanceFacade {
-    
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("FlightDB_PU");
+
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("FlightDB_PU");
 
     public FlightInstance addFlightInstance(FlightInstance flightinstance) {
         EntityManager em = emf.createEntityManager();
@@ -28,5 +29,17 @@ public class FlightInstanceFacade {
         } finally {
             em.close();
         }
+    }
+
+    public boolean addFlight(Flight flight, FlightInstance flightinstance) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        flight.setFlightInstance(flightinstance);
+        flightinstance.setFlight(flight);
+        em.merge(flightinstance);
+        em.merge(flight);
+        em.getTransaction().commit();
+        em.close();
+        return true;
     }
 }
