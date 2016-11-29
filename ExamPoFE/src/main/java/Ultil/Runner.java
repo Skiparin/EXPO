@@ -22,6 +22,7 @@ public class Runner {
         AirportFacade AF = new AirportFacade();
         AirlineFacade AlF = new AirlineFacade();
         FlightFacade FF = new FlightFacade();
+        FlightInstanceFacade FIF = new FlightInstanceFacade();
 
         Airport airport1 = new Airport();
         airport1.setName("Kastrup");
