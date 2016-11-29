@@ -68,15 +68,10 @@ public class FlightResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("flightId")
-<<<<<<< HEAD
-    public int ReserveFlight(@PathParam("id") int id) {
-        return 1;
-=======
     public Object ReserveFlight(@PathParam("id") int id) {
         ReservationFacade resFacade = new ReservationFacade();
         Flight flightId = gson.fromJson(resFacade.addReservation(id), Flight.class);
         gson.toJson(flightId);
         return flightId;
->>>>>>> cf740000dc9024734fbab57f398d847ace33c891
     }
 }
