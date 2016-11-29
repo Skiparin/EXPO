@@ -23,28 +23,28 @@ public class Airport implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String IATACode;
     private String timezone;
     private String name;
     private String country;
     private String city;
-    @OneToMany(mappedBy = "Airport")
-    private List<Flight> flightFrom;
-    @OneToMany(mappedBy = "Airport")
-    private List<Flight> flightTo;
+    @OneToMany(mappedBy = "destination")
+    private List<Flight> destination;
+    @OneToMany(mappedBy = "origin")
+    private List<Flight> origin;
 
     public Airport() {
     }
 
     
     
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -88,21 +88,31 @@ public class Airport implements Serializable {
         this.city = city;
     }
 
-    public List<Flight> getFlightFrom() {
-        return flightFrom;
+    public List<Flight> getDestination() {
+        return destination;
     }
 
-    public void setFlightFrom(List<Flight> flightFrom) {
-        this.flightFrom = flightFrom;
+    public void setDestination(List<Flight> destination) {
+        this.destination = destination;
     }
 
-    public List<Flight> getFlightTo() {
-        return flightTo;
+    public List<Flight> getOrigin() {
+        return origin;
     }
 
-    public void setFlightTo(List<Flight> flightTo) {
-        this.flightTo = flightTo;
+    public void setOrigin(List<Flight> origin) {
+        this.origin = origin;
     }
+
+    public void addDestination(Flight flight){
+        this.destination.add(flight);
+    }
+    
+    public void addOrigin(Flight flight){
+        this.origin.add(flight);
+    }
+
+    
     
     
     

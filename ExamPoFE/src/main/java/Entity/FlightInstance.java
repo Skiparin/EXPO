@@ -24,8 +24,8 @@ public class FlightInstance implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String date;
     private String time;
     private String avaiableSeats;
@@ -35,11 +35,11 @@ public class FlightInstance implements Serializable {
     @OneToMany(mappedBy = "flightInstance")
     private List<Reservation> reservation;
     
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -73,6 +73,26 @@ public class FlightInstance implements Serializable {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public void setFlight(Flight flight) {
+        this.flight = flight;
+    }
+
+    public List<Reservation> getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(List<Reservation> reservation) {
+        this.reservation = reservation;
+    }
+    
+    public void addReservation(Reservation reservation){
+        this.reservation.add(reservation);
     }
 
     
