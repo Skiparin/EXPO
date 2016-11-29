@@ -7,7 +7,6 @@ package rest;
 
 import Entity.Flight;
 import Facades.ReservationFacade;
-import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -17,7 +16,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import com.google.gson.Gson;
-import javax.persistence.Persistence;
 import javax.ws.rs.Consumes;
 
 
@@ -70,7 +68,7 @@ public class FlightResource {
     @Path("flightId")
     public Object ReserveFlight(@PathParam("id") int id) {
         ReservationFacade resFacade = new ReservationFacade();
-        Flight flightId = gson.fromJson(resFacade.addReservation(id), Flight.class);
+        Flight flightId = gson.fromJson(resFacade.addReservation(reservation), Flight.class);
         gson.toJson(flightId);
         return flightId;
     }

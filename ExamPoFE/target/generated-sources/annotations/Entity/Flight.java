@@ -1,8 +1,5 @@
 package Entity;
 
-import Entity.Airline;
-import Entity.Airport;
-import Entity.FlightInstance;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
@@ -10,7 +7,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 
 @Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-11-28T12:08:49")
 @StaticMetamodel(Flight.class)
-public class Flight_ { 
+public class Flight { 
 
     public static volatile SingularAttribute<Flight, Integer> numberOfSeats;
     public static volatile SingularAttribute<Flight, Airport> Airport;
