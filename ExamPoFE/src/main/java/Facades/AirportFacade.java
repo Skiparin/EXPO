@@ -29,4 +29,17 @@ public class AirportFacade {
             em.close();
         }
     }
+
+    public Airport getAirport(int ID) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Airport airport = em.find(Airport.class, ID);
+        em.getTransaction().commit();
+        if (airport != null) {
+            em.close();
+            return airport;
+        } else {
+            return null;
+        }
+    }
 }

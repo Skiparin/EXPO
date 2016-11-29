@@ -8,9 +8,6 @@ package Ultil;
 import Entity.Airline;
 import Entity.Airport;
 import Entity.Flight;
-import Facades.AirlineFacade;
-import Facades.AirportFacade;
-import Facades.FlightFacade;
 import Entity.FlightInstance;
 import Entity.Passenger;
 import Entity.Reservation;
@@ -71,6 +68,7 @@ public class Runner {
         AirportFacade AF = new AirportFacade();
         AirlineFacade AlF = new AirlineFacade();
         FlightFacade FF = new FlightFacade();
+        FlightInstanceFacade FIF = new FlightInstanceFacade();
 
         Airport airport1 = new Airport();
         airport1.setName("Kastrup");

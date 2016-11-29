@@ -31,6 +31,19 @@ public class PassengerFacade {
         }
     }
 
+    public Passenger getPassenger(int ID) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Passenger passenger = em.find(Passenger.class, ID);
+        em.getTransaction().commit();
+        if (passenger != null) {
+            em.close();
+            return passenger;
+        } else {
+            return null;
+        }
+    }
+
     public boolean addReservation(Reservation reservation, Passenger passenger) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
