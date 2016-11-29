@@ -52,5 +52,13 @@ public class Passenger implements Serializable {
         this.lastName = lastName;
     }
 
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
+    }
+
     
 }
