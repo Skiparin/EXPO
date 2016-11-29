@@ -48,5 +48,26 @@ public class Reservation implements Serializable {
     public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
     }
+
+    public FlightInstance getFlightInstance() {
+        return flightInstance;
+    }
+
+    public void setFlightInstance(FlightInstance flightInstance) {
+        this.flightInstance = flightInstance;
+    }
+
+    public List<Passenger> getPassengers() {
+        return passengers;
+    }
+
+    public void setPassengers(List<Passenger> passengers) {
+        this.passengers = passengers;
+    }
+    
+    public void addPassengers(Passenger passenger){
+        this.passengers.add(passenger);
+    }
+    
     
 }

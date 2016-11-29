@@ -103,6 +103,16 @@ public class Flight implements Serializable {
         this.flightInstance = flightInstance;
     }
     
+    public void addFlightInstance(FlightInstance flightInstance){
+        this.flightInstance.add(flightInstance);
+    }
+
+    
+    
+    
+
+
+    
     
     
 }
