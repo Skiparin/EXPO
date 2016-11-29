@@ -7,6 +7,8 @@ package Facades;
 
 import Entity.Flight;
 import Entity.FlightInstance;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -54,5 +56,15 @@ public class FlightInstanceFacade {
         em.getTransaction().commit();
         em.close();
         return true;
+    }
+
+    public List<FlightInstance> getFromAPI(String from, String date, int tickets) {
+        EntityManager em = emf.createEntityManager();
+        List<FlightInstance> FI = new ArrayList();
+        
+        em.getTransaction().begin();
+        em.getTransaction().commit();
+        return FI;
+        
     }
 }
