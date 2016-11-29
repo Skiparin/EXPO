@@ -13,7 +13,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+import static java.util.Collections.list;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.ws.rs.core.Context;
@@ -26,6 +28,12 @@ import javax.ws.rs.core.MediaType;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import runnable.HttpGetTask;
+import java.util.concurrent.ExecutorService; 
+import java.util.concurrent.Executors; 
+import java.util.concurrent.Future;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * REST Web Service
@@ -81,7 +89,7 @@ public class GenericResource {
                         json = json.concat(output);
                         System.out.println(json);
                     }
-                    if((i+1) != list.size()){
+                    if ((i + 1) != list.size()) {
                         json = json.concat(",");
                     }
                     httpClient.getConnectionManager().shutdown();
@@ -131,4 +139,58 @@ public class GenericResource {
         return json;
     }
 
+    @GET
+    @Produces(MediaType.TEXT_HTML)
+    @Path("/todoo/{from}/{to}/{date}/{persons}")
+    public String getFlightss(@PathParam("from") String FROM, @PathParam("to") String TO,
+            @PathParam("date") String DATE, @PathParam("persons") String PERSONS) {
+        List<Airline> list = facade.getAllAirlines();
+        List<Future> futures = new ArrayList<>();
+        ExecutorService threadpool = Executors.newFixedThreadPool(list.size());
+        String params = FROM + "/" + TO + "/" + DATE + "/" + PERSONS;
+        String json = "[";
+        
+        for (Airline airline : list) {
+            futures.add(threadpool.submit(new HttpGetTask(airline.getUrl() + params)));
+        }
+        
+        while(!allDone(futures)){
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+ 
+        for (Future future : futures) {
+            try {
+                json = json.concat((String) future.get());
+                json = json.concat(",");
+            } catch (InterruptedException ex) {
+                Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ExecutionException ex) {
+                Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        json = json.substring(0, json.length() - 1);
+        json = json.concat("]");
+        return json;
+        
+    }
+
+    
+    public boolean allDone(List<Future> list){
+        int size = list.size();
+        int count = 0;
+        
+        for (Future task : list) {
+            if(task.isDone()){
+                count++;
+            }
+        }
+        if(size == count){
+            return true;
+        }
+        return false;
+    }
 }
