@@ -15,8 +15,8 @@ import javax.persistence.Persistence;
  * @author Oliver
  */
 public class AirlineFacade {
-    
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("FlightDB_PU");
+
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("FlightDB_PU");
 
     public Airline addAirline(Airline airline) {
         EntityManager em = emf.createEntityManager();
@@ -27,6 +27,19 @@ public class AirlineFacade {
             return airline;
         } finally {
             em.close();
+        }
+    }
+
+    public Airline getAirline(int ID) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Airline airline = em.find(Airline.class, ID);
+        em.getTransaction().commit();
+        if (airline != null) {
+            em.close();
+            return airline;
+        } else {
+            return null;
         }
     }
 }

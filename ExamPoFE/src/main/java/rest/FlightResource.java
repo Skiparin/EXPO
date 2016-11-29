@@ -5,17 +5,21 @@
  */
 package rest;
 
+import Entity.Flight;
+import Facades.ReservationFacade;
 import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
+import com.google.gson.Gson;
+import javax.persistence.Persistence;
+import javax.ws.rs.Consumes;
+
 
 /**
  * REST Web Service
@@ -24,6 +28,8 @@ import javax.ws.rs.core.MediaType;
  */
 @Path("Flight")
 public class FlightResource {
+
+    private static final Gson gson = new Gson();
 
     @Context
     private UriInfo context;
@@ -59,9 +65,13 @@ public class FlightResource {
     }
 
     @POST
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("flightId")
-    public int ReserveFlight(@PathParam("id") int id) {
-        return 1;
+    public Object ReserveFlight(@PathParam("id") int id) {
+        ReservationFacade resFacade = new ReservationFacade();
+        Flight flightId = gson.fromJson(resFacade.addReservation(id), Flight.class);
+        gson.toJson(flightId);
+        return flightId;
     }
 }
