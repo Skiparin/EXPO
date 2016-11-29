@@ -92,7 +92,7 @@ public class Airport implements Serializable {
         return destination;
     }
 
-    public void setDestination(Flight flight) {
+    public void setDestination(List<Flight> destination) {
         this.destination = destination;
     }
 
@@ -100,8 +100,16 @@ public class Airport implements Serializable {
         return origin;
     }
 
-    public void setOrigin(Flight flight) {
+    public void setOrigin(List<Flight> origin) {
         this.origin = origin;
+    }
+
+    public void addDestination(Flight flight){
+        this.destination.add(flight);
+    }
+    
+    public void addOrigin(Flight flight){
+        this.origin.add(flight);
     }
 
     

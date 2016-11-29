@@ -34,7 +34,7 @@ public class FlightInstanceFacade {
     public boolean addFlight(Flight flight, FlightInstance flightinstance) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        flight.setFlightInstance(flightinstance);
+        flight.addFlightInstance(flightinstance);
         flightinstance.setFlight(flight);
         em.merge(flightinstance);
         em.merge(flight);

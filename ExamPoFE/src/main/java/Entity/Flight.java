@@ -99,9 +99,19 @@ public class Flight implements Serializable {
         return flightInstance;
     }
 
-    public void setFlightInstance(FlightInstance flightinstance) {
+    public void setFlightInstance(List<FlightInstance> flightInstance) {
         this.flightInstance = flightInstance;
     }
+    
+    public void addFlightInstance(FlightInstance flightInstance){
+        this.flightInstance.add(flightInstance);
+    }
+
+    
+    
+    
+
+
     
     
     

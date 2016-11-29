@@ -50,8 +50,12 @@ public class Airline implements Serializable {
         return flights;
     }
 
-    public void setFlights(Flight flight) {
+    public void setFlights(List<Flight> flights) {
         this.flights = flights;
+    }
+
+    public void addFlights(Flight flight) {
+        this.flights.add(flight);
     }
     
     
