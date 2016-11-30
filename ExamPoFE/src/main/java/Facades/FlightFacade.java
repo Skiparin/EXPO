@@ -45,7 +45,7 @@ public class FlightFacade {
         }
     }
 
-    public boolean addAirline(Airline airline, Flight flight) {
+    public Flight addAirline(Airline airline, Flight flight) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         airline.addFlights(flight);
@@ -54,10 +54,10 @@ public class FlightFacade {
         em.merge(flight);
         em.getTransaction().commit();
         em.close();
-        return true;
+        return flight;
     }
 
-    public boolean addDestination(Airport airport, Flight flight) {
+    public Flight addDestination(Airport airport, Flight flight) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         airport.addDestination(flight);
@@ -66,10 +66,10 @@ public class FlightFacade {
         em.merge(flight);
         em.getTransaction().commit();
         em.close();
-        return true;
+        return flight;
     }
 
-    public boolean addOrigin(Airport airport, Flight flight) {
+    public Flight addOrigin(Airport airport, Flight flight) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         airport.addOrigin(flight);
@@ -78,6 +78,6 @@ public class FlightFacade {
         em.merge(flight);
         em.getTransaction().commit();
         em.close();
-        return true;
+        return flight;
     }
 }

@@ -18,22 +18,25 @@ import static org.junit.Assert.*;
  * @author Thesoap
  */
 public class AirportFacadeTest {
-    
+
     public AirportFacadeTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
+        AirportFacade ApF = new AirportFacade();
+        Airport airport = new Airport();
+        airport = ApF.addAirport(airport);
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -46,7 +49,17 @@ public class AirportFacadeTest {
         AirportFacade ApF = new AirportFacade();
         Airport airport = new Airport();
         airport = ApF.addAirport(airport);
-        assertEquals(airport.getId(), 1);
+        assertEquals(airport.getId(), 2);
     }
-    
+
+    /**
+     * Test of getAirport method, of class AirportFacade.
+     */
+    @Test
+    public void testGetAirport() {
+        AirportFacade ApF = new AirportFacade();
+        Airport airport = ApF.getAirport(1);
+        assertEquals(1, airport.getId());
+    }
+
 }
