@@ -17,8 +17,8 @@ import javax.persistence.Persistence;
  * @author Oliver
  */
 public class ReservationFacade {
-    
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("FlightDB_PU");
+
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("FlightDB_PU");
 
     public Reservation addReservation(Reservation reservation) {
         EntityManager em = emf.createEntityManager();
@@ -31,7 +31,21 @@ public class ReservationFacade {
             em.close();
         }
     }
-        public boolean addFlightInstance(FlightInstance flightinstance, Reservation reservation) {
+
+    public Reservation getReservation(int ID) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Reservation reservation = em.find(Reservation.class, ID);
+        em.getTransaction().commit();
+        if (reservation != null) {
+            em.close();
+            return reservation;
+        } else {
+            return null;
+        }
+    }
+
+    public boolean addFlightInstance(FlightInstance flightinstance, Reservation reservation) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         flightinstance.addReservation(reservation);
