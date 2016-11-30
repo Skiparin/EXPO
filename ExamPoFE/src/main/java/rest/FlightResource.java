@@ -74,11 +74,16 @@ public class FlightResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("flightId")
-    public Object ReserveFlight(@PathParam("id") int id) {
+    @Path("{flightId}")
+    public Object ReserveFlight(@PathParam("flightId") int id) {
+        Reservation res = new Reservation();
         Flight flightId;
+        res.setTotalPrice(750);
         flightId = flightFacade.getFlight(id);
+        resFacade.addReservation(res);
         gson.toJson(flightId);
+        System.out.println(flightId);
+        System.out.println(res);
         return flightId;
     }
 }
