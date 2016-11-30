@@ -31,6 +31,19 @@ public class FlightFacade {
             em.close();
         }
     }
+    
+        public Flight getFlight(int ID) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Flight flight = em.find(Flight.class, ID);
+        em.getTransaction().commit();
+        if (flight != null) {
+            em.close();
+            return flight;
+        } else {
+            return null;
+        }
+    }
 
     public boolean addAirline(Airline airline, Flight flight) {
         EntityManager em = emf.createEntityManager();

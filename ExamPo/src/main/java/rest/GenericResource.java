@@ -8,10 +8,6 @@ package rest;
 import com.google.gson.Gson;
 import entity.Airline;
 import facades.AirlineFacade;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
@@ -23,9 +19,12 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import runnable.HttpGetTask;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.stream.Collectors;
+import javax.ws.rs.Consumes;
 
 /**
  * REST Web Service
@@ -58,77 +57,85 @@ public class GenericResource {
      */
     @GET
     @Produces(MediaType.TEXT_HTML)
-    @Path("/todo/{from}/{to}/{date}/{persons}")
-    public String getFlights(@PathParam("from") String FROM, @PathParam("to") String TO,
-            @PathParam("date") String DATE, @PathParam("persons") String PERSONS) {
+    @Path("/get/{from}/{date}/{persons}")
+    public String getFlights(@PathParam("from") String FROM, @PathParam("date") String DATE,
+            @PathParam("persons") String PERSONS) {
         List<Airline> list = facade.getAllAirlines();
+        List<Future<String>> futures = new ArrayList<>();
+        ExecutorService threadpool = Executors.newFixedThreadPool(list.size());
+        String params = FROM + "/" + DATE + "/" + PERSONS;
         String json = "[";
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getUrl() != null) {
 
-                try {
-                    DefaultHttpClient httpClient = new DefaultHttpClient();
-
-                    HttpGet GetRequest = new HttpGet(list.get(i).getUrl() + FROM + "/" + TO + "/" + DATE + "/" + PERSONS);
-                    System.out.println(GetRequest.getURI());
-                    HttpResponse response = httpClient.execute(GetRequest);
-
-                    BufferedReader br = new BufferedReader(
-                            new InputStreamReader((response.getEntity().getContent())));
-
-                    String output;
-                    while ((output = br.readLine()) != null) {
-                        json = json.concat(output);
-                        System.out.println(json);
-                    }
-                    if((i+1) != list.size()){
-                        json = json.concat(",");
-                    }
-                    httpClient.getConnectionManager().shutdown();
-
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+        for (Airline airline : list) {
+            futures.add(threadpool.submit(new HttpGetTask(airline.getUrl() + params)));
         }
-        json = json.concat("]");
+
+        String smarterJson = futures.stream().<String>map(future -> {
+            try {
+                return future.get();
+            } catch (Exception ex) {
+                throw new RuntimeException("");
+            }
+        }).parallel().collect(Collectors.joining(","));
+
+        json = json.concat(smarterJson + "]");
         return json;
     }
 
     @GET
     @Produces(MediaType.TEXT_HTML)
-    @Path("/todo/{from}/{date}/{persons}")
-    public String getFlights(@PathParam("from") String FROM, @PathParam("date") String DATE,
-            @PathParam("persons") String PERSONS) {
-        String json = "";
-        try {
-            DefaultHttpClient httpClient = new DefaultHttpClient();
-            HttpGet GetRequest = new HttpGet("http://airline-plaul.rhcloud.com/api/flightinfo/" + FROM + "/" + DATE + "/" + PERSONS);
+    @Path("/get/{from}/{to}/{date}/{persons}")
+    public String getFlights(@PathParam("from") String FROM, @PathParam("to") String TO,
+            @PathParam("date") String DATE, @PathParam("persons") String PERSONS) {
+        List<Airline> list = facade.getAllAirlines();
+        List<Future<String>> futures = new ArrayList<>();
+        ExecutorService threadpool = Executors.newFixedThreadPool(list.size());
+        String params = FROM + "/" + TO + "/" + DATE + "/" + PERSONS;
+        String json = "[";
 
-            HttpResponse response = httpClient.execute(GetRequest);
-
-            BufferedReader br = new BufferedReader(
-                    new InputStreamReader((response.getEntity().getContent())));
-
-            String output;
-            while ((output = br.readLine()) != null) {
-                json = json.concat(output);
-                System.out.println(json);
-            }
-            httpClient.getConnectionManager().shutdown();
-
-        } catch (MalformedURLException e) {
-
-            e.printStackTrace();
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-
+        for (Airline airline : list) {
+            futures.add(threadpool.submit(new HttpGetTask(airline.getUrl() + params)));
         }
+
+        String smarterJson = futures.stream().<String>map(future -> {
+            try {
+                return future.get();
+            } catch (Exception ex) {
+                throw new RuntimeException("");
+            }
+        }).parallel().collect(Collectors.joining(","));
+
+        json = json.concat(smarterJson + "]");
         return json;
+    }
+    
+    @GET
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/get/{from}/{to}/{date}/{persons}")
+    public String getFlights(@PathParam("from") String FROM, @PathParam("to") String TO,
+            @PathParam("date") String DATE, @PathParam("persons") String PERSONS) {
+        List<Airline> list = facade.getAllAirlines();
+        List<Future<String>> futures = new ArrayList<>();
+        ExecutorService threadpool = Executors.newFixedThreadPool(list.size());
+        String params = FROM + "/" + TO + "/" + DATE + "/" + PERSONS;
+        String json = "[";
+
+        for (Airline airline : list) {
+            futures.add(threadpool.submit(new HttpGetTask(airline.getUrl() + params)));
+        }
+
+        String smarterJson = futures.stream().<String>map(future -> {
+            try {
+                return future.get();
+            } catch (Exception ex) {
+                throw new RuntimeException("");
+            }
+        }).parallel().collect(Collectors.joining(","));
+
+        json = json.concat(smarterJson + "]");
+        return json;
+
     }
 
 }
