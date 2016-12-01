@@ -10,18 +10,18 @@
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="all" href="css/daterangepicker.css" />
     <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="app/list.js" type="text/javascript"></script>
     <script src="js/fre.js" type="text/javascript"></script>  
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/moment.js"></script>
     <script type="text/javascript" src="js/daterangepicker.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
   </head>
 <body>
     <div ng-app="myApp" ng-controller="myCtrl as ctrl">
-            
+            {{ctrl.firstName}}
 <section class="menu-bg">
   <div class="container">
     <div class="row">
@@ -279,9 +279,9 @@
                 <img src="img/list1.png" width="100%">
               </div>
             </div>
-            <div class="col-md-2">
-                <h3> test  </h3>
-              <p ng-model=""> </p>
+            <div ng-controller="myCtrl as ctrl" class="col-md-2">
+                <h3> test {{ctrl.firstName}}  </h3>
+              <p> </p>
             </div>
             <div class="col-md-1">
               <i class="fa fa-arrow-right"></i>

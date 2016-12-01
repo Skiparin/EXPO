@@ -35,7 +35,17 @@ public class Runner {
         Airport airport1 = new Airport();
         airport1.setCity("Berlin");
         airport1.setCountry("Germany");
+        airport1.setIATACode("Code123");
+        airport1.setTimezone("PCT+3");
+        airport1.setName("wuupDeWuup");
         APF.addAirport(airport1);
+        Airport airport2 = new Airport();
+        airport2.setCity("Rom");
+        airport2.setCountry("Italy");
+        airport2.setIATACode("Code321");
+        airport2.setTimezone("PCT-5");
+        airport2.setName("Boop");
+        APF.addAirport(airport2);
         
         Airline airline1 = new Airline();
         airline1.setName("WoopWoop");
@@ -46,6 +56,9 @@ public class Runner {
         flight1.setFlightTime(16);
         flight1.setNumberOfSeats(6);
         FF.addFlight(flight1);
+        FF.addAirline(airline1, flight1);
+        FF.addDestination(airport2, flight1);
+        FF.addOrigin(airport1, flight1);
         
         FlightInstance flightinstance1 = new FlightInstance();
         flightinstance1.setAvaiableSeats("2");
@@ -53,15 +66,18 @@ public class Runner {
         flightinstance1.setPrice(500);
         flightinstance1.setTime("11:11:2016");
         FIF.addFlightInstance(flightinstance1);
+        FIF.addFlight(flight1, flightinstance1);
+        
+        Reservation reservation1 = new Reservation();
+        reservation1.setTotalPrice(750);
+        RF.addReservation(reservation1);
+        RF.addFlightInstance(flightinstance1, reservation1);
         
         Passenger passenger1 = new Passenger();
         passenger1.setFirstName("Ole");
         passenger1.setLastName("Hansen");
         PF.addPassenger(passenger1);
-        
-        Reservation reservation1 = new Reservation();
-        reservation1.setTotalPrice(750);
-        RF.addReservation(reservation1);
+        PF.addReservation(reservation1, passenger1);
     }
     
     public static void main(String[] args) {
@@ -72,42 +88,37 @@ public class Runner {
         PassengerFacade PF = new PassengerFacade();
         ReservationFacade RF = new ReservationFacade();
         
-        Airline airline = new Airline();
-        airline.setName("Hej");
-        ALF.addAirline(airline);
-        
-        Airport airport = new Airport();
-        airport.setName("kalk");
-        AF.addAirport(airport);
-        
-        Flight flight = new Flight();
-        flight.setFlightNumber("ihsdfihodfs");
-        FF.addFlight(flight);
-        
-        FlightInstance flightInstance = new FlightInstance();   
-        flightInstance.setDate("27/13-12");
-        FIF.addFlightInstance(flightInstance);
-        
-        Passenger passenger = new Passenger();
-        passenger.setFirstName("Kim");
-        PF.addPassenger(passenger);
-        
-        Reservation reservation = new Reservation();
-        reservation.setTotalPrice(200);
-        RF.addReservation(reservation);
-        
-        
+//        Airline airline = new Airline();
+//        airline.setName("Hej");
+//        ALF.addAirline(airline);
+//        
+//        Airport airport = new Airport();
+//        airport.setName("kalk");
+//        AF.addAirport(airport);
+//        
+//        Flight flight = new Flight();
+//        flight.setFlightNumber("ihsdfihodfs");
+//        FF.addFlight(flight);
+//        
+//        FlightInstance flightInstance = new FlightInstance();   
+//        flightInstance.setDate("27/13-12");
+//        FIF.addFlightInstance(flightInstance);
+//        
+//        Passenger passenger = new Passenger();
+//        passenger.setFirstName("Kim");
+//        PF.addPassenger(passenger);
+//        
+//        Reservation reservation = new Reservation();
+//        reservation.setTotalPrice(200);
+//        RF.addReservation(reservation);
         
         
-       
-        FF.addFlight(flight);
-        
-        FF.addAirline(airline, flight);
+
         // FF.addDestination(airport, flight);
         
         // FF.addAirline(airline, flight);
-//        Runner runner = new Runner();
-//        runner.putData();
+        Runner runner = new Runner();
+        runner.putData();
     }
 
 }
