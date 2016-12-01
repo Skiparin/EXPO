@@ -1,8 +1,4 @@
-Entity\Flight_.class
 Entity\Passenger.class
-Entity\Reservation_.class
 Entity\Reservation.class
-rest\FlightResource.class
 Entity\Flight.class
 rest\ApplicationConfig.class
-Entity\Passenger_.class

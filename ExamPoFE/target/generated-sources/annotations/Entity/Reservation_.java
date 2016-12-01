@@ -7,13 +7,13 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-11-28T12:08:49")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-12-01T11:51:29")
 @StaticMetamodel(Reservation.class)
 public class Reservation_ { 
 
     public static volatile ListAttribute<Reservation, Passenger> passengers;
     public static volatile SingularAttribute<Reservation, Integer> totalPrice;
     public static volatile SingularAttribute<Reservation, FlightInstance> flightInstance;
-    public static volatile SingularAttribute<Reservation, String> id;
+    public static volatile SingularAttribute<Reservation, Integer> id;
 
 }

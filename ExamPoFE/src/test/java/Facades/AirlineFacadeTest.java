@@ -25,6 +25,9 @@ public class AirlineFacadeTest {
 
     @BeforeClass
     public static void setUpClass() {
+        AirlineFacade AlF = new AirlineFacade();
+        Airline airline = new Airline();
+        airline = AlF.addAirline(airline);
     }
 
     @AfterClass
@@ -47,7 +50,17 @@ public class AirlineFacadeTest {
         AirlineFacade AlF = new AirlineFacade();
         Airline airline = new Airline();
         airline = AlF.addAirline(airline);
-        assertEquals(airline.getId(), 1);
+        assertEquals(airline.getId(), 2);
+    }
+
+    /**
+     * Test of getAirline method, of class AirlineFacade.
+     */
+    @Test
+    public void testGetAirline() {
+        AirlineFacade AlF = new AirlineFacade();
+        Airline airline = AlF.getAirline(1);
+        assertEquals(1, airline.getId());
     }
 
 }

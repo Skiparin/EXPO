@@ -6,6 +6,7 @@
 package Entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,11 +32,12 @@ public class Airport implements Serializable {
     private String country;
     private String city;
     @OneToMany(mappedBy = "destination")
-    private List<Flight> destination;
+    private List<Flight> destination = new ArrayList();
     @OneToMany(mappedBy = "origin")
-    private List<Flight> origin;
+    private List<Flight> origin = new ArrayList();
 
     public Airport() {
+        
     }
 
     
