@@ -1,0 +1,7 @@
+Facades\FacadesSuite.class
+Facades\PassengerFacadeTest.class
+Facades\FlightInstanceFacadeTest.class
+Facades\AirportFacadeTest.class
+Facades\FlightFacadeTest.class
+Facades\AirlineFacadeTest.class
+Facades\ReservationFacadeTest.class
