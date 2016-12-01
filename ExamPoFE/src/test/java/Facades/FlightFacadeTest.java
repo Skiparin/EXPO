@@ -1,8 +1,3 @@
- */
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Facades;
 
 import Entity.Airline;
@@ -54,7 +49,7 @@ public class FlightFacadeTest {
         FlightFacade FF = new FlightFacade();
         Flight flight = new Flight();
         flight = FF.addFlight(flight);
-        assertEquals(flight.getId(), 3);
+        assertEquals(flight.getId(), 4);
     }
 
     /**
@@ -88,15 +83,15 @@ public class FlightFacadeTest {
      */
     @Test
     public void testAddDestination() {
-        System.out.println("addDestination");
-        Airport airport = null;
-        Flight flight = null;
-        FlightFacade instance = new FlightFacade();
-        boolean expResult = false;
-        boolean result = instance.addDestination(airport, flight);
+        FlightFacade FF = new FlightFacade();
+        AirportFacade APF = new AirportFacade();
+        Airport airport = new Airport();
+        Flight flight = new Flight();
+        airport = APF.addAirport(airport);
+        flight = FF.addDestination(airport, flight);
+        int expResult = airport.getId();
+        int result = flight.getDestination().getId();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -104,15 +99,15 @@ public class FlightFacadeTest {
      */
     @Test
     public void testAddOrigin() {
-        System.out.println("addOrigin");
-        Airport airport = null;
-        Flight flight = null;
-        FlightFacade instance = new FlightFacade();
-        boolean expResult = false;
-        boolean result = instance.addOrigin(airport, flight);
+        FlightFacade FF = new FlightFacade();
+        AirportFacade APF = new AirportFacade();
+        Airport airport = new Airport();
+        Flight flight = new Flight();
+        airport = APF.addAirport(airport);
+        flight = FF.addOrigin(airport, flight);
+        int expResult = airport.getId();
+        int result = flight.getOrigin().getId();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
 }
