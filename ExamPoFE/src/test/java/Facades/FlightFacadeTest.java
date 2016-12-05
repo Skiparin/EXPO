@@ -1,4 +1,4 @@
- */
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -86,33 +86,33 @@ public class FlightFacadeTest {
     /**
      * Test of addDestination method, of class FlightFacade.
      */
-    @Test
-    public void testAddDestination() {
-        System.out.println("addDestination");
-        Airport airport = null;
-        Flight flight = null;
-        FlightFacade instance = new FlightFacade();
-        boolean expResult = false;
-        boolean result = instance.addDestination(airport, flight);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of addOrigin method, of class FlightFacade.
-     */
-    @Test
-    public void testAddOrigin() {
-        System.out.println("addOrigin");
-        Airport airport = null;
-        Flight flight = null;
-        FlightFacade instance = new FlightFacade();
-        boolean expResult = false;
-        boolean result = instance.addOrigin(airport, flight);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    @Test
+//    public void testAddDestination() {
+//        System.out.println("addDestination");
+//        Airport airport = null;
+//        Flight flight = null;
+//        FlightFacade instance = new FlightFacade();
+//        boolean expResult = false;
+//        boolean result = instance.addDestination(airport, flight);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of addOrigin method, of class FlightFacade.
+//     */
+//    @Test
+//    public void testAddOrigin() {
+//        System.out.println("addOrigin");
+//        Airport airport = null;
+//        Flight flight = null;
+//        FlightFacade instance = new FlightFacade();
+//        boolean expResult = false;
+//        boolean result = instance.addOrigin(airport, flight);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
 
 }
