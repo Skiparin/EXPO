@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+Entity\Passenger.class
+Entity\Reservation.class
+Entity\Flight.class
+rest\ApplicationConfig.class
+=======
+=======
+>>>>>>> 2e88383825f163c1cde4e808b6d18e6deb179b54
 Entity\FlightInstance.class
 Entity\Flight_.class
 Ultil\Builder.class
@@ -20,3 +29,13 @@ Entity\Passenger_.class
 Facades\ReservationFacade.class
 Entity\Airport.class
 Facades\FlightInstanceFacade.class
+<<<<<<< HEAD
+>>>>>>> 4a1ea3217deacd9700e0d29f8a94d2c525d2f598
+=======
+=======
+Entity\Passenger.class
+Entity\Reservation.class
+Entity\Flight.class
+rest\ApplicationConfig.class
+>>>>>>> ec1a5db9f2b113b0b9ade9917a67948c82b94c9c
+>>>>>>> 2e88383825f163c1cde4e808b6d18e6deb179b54
