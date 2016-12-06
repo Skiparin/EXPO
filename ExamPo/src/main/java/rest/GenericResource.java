@@ -101,7 +101,7 @@ public class GenericResource {
             try {
                 return future.get();
             } catch (Exception ex) {
-                throw new RuntimeException("");
+                throw new RuntimeException(ex);
             }
         }).parallel().collect(Collectors.joining(","));
 

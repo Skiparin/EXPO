@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -20,8 +20,6 @@ import static org.junit.Assert.*;
  *
  * @author Thesoap
  */
-
-
 public class FlightFacadeTest {
 
     public FlightFacadeTest() {
@@ -86,17 +84,16 @@ public class FlightFacadeTest {
     /**
      * Test of addDestination method, of class FlightFacade.
      */
-//    @Test
-//    public void testAddDestination() {
-//        System.out.println("addDestination");
-//        Airport airport = null;
-//        Flight flight = null;
-//        FlightFacade instance = new FlightFacade();
-//        boolean expResult = false;
-//        boolean result = instance.addDestination(airport, flight);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+            //    public void testAddDestination() {
+                //        System.out.println("addDestination");
+                //        Airport airport = null;
+                //        Flight flight = null;
+                //        FlightFacade instance = new FlightFacade();
+                //        boolean expResult = false;
+                //        boolean result = instance.addDestination(airport, flight);
+                //        assertEquals(expResult, result);
+                //        // TODO review the generated test code and remove the default call to fail.
+                //        fail("The test case is a prototype.");
 //    }
 //
 //    /**
@@ -104,6 +101,10 @@ public class FlightFacadeTest {
 //     */
 //    @Test
 //    public void testAddOrigin() {
+
+    /**
+     * Test of addOrigin method, of class FlightFacade.
+     */
 //        System.out.println("addOrigin");
 //        Airport airport = null;
 //        Flight flight = null;
