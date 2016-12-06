@@ -28,7 +28,7 @@ public class Flight implements Serializable {
     private int id;
     private String flightNumber;
     private int numberOfSeats;
-    private int flightTime;
+    private String flightTime;
     
     @ManyToOne
     private Airline airline;
@@ -67,11 +67,11 @@ public class Flight implements Serializable {
         this.numberOfSeats = numberOfSeats;
     }
 
-    public int getFlightTime() {
+    public String getFlightTime() {
         return flightTime;
     }
 
-    public void setFlightTime(int flightTime) {
+    public void setFlightTime(String flightTime) {
         this.flightTime = flightTime;
     }
 

@@ -44,22 +44,22 @@ public class AirportFacadeTest {
     /**
      * Test of addAirport method, of class AirportFacade.
      */
-    @Test
-    public void testAddAirport() {
-        AirportFacade ApF = new AirportFacade();
-        Airport airport = new Airport();
-        airport = ApF.addAirport(airport);
-        assertEquals(airport.getId(), 2);
-    }
-
-    /**
-     * Test of getAirport method, of class AirportFacade.
-     */
-    @Test
-    public void testGetAirport() {
-        AirportFacade ApF = new AirportFacade();
-        Airport airport = ApF.getAirport(1);
-        assertEquals(1, airport.getId());
-    }
+//    @Test
+//    public void testAddAirport() {
+//        AirportFacade ApF = new AirportFacade();
+//        Airport airport = new Airport();
+//        airport = ApF.addAirport(airport);
+//        assertEquals(airport.getId(), 2);
+//    }
+//
+//    /**
+//     * Test of getAirport method, of class AirportFacade.
+//     */
+//    @Test
+//    public void testGetAirport() {
+//        AirportFacade ApF = new AirportFacade();
+//        Airport airport = ApF.getAirport(1);
+//        assertEquals(1, airport.getId());
+//    }
 
 }
