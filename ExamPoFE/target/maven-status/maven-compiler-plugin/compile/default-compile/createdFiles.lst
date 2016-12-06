@@ -1,4 +1,29 @@
+<<<<<<< HEAD
 Entity\Passenger.class
 Entity\Reservation.class
 Entity\Flight.class
 rest\ApplicationConfig.class
+=======
+Entity\FlightInstance.class
+Entity\Flight_.class
+Ultil\Builder.class
+Entity\Passenger.class
+Ultil\Runner.class
+Entity\Reservation_.class
+Entity\Airline_.class
+Entity\Airport_.class
+Entity\FlightInstance_.class
+Entity\Reservation.class
+Facades\PassengerFacade.class
+Entity\Airline.class
+Facades\AirportFacade.class
+rest\FlightResource.class
+Facades\AirlineFacade.class
+Facades\FlightFacade.class
+Entity\Flight.class
+rest\ApplicationConfig.class
+Entity\Passenger_.class
+Facades\ReservationFacade.class
+Entity\Airport.class
+Facades\FlightInstanceFacade.class
+>>>>>>> 4a1ea3217deacd9700e0d29f8a94d2c525d2f598

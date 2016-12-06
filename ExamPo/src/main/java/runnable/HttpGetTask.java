@@ -5,14 +5,11 @@
  */
 package runnable;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.util.concurrent.Callable;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
@@ -36,33 +33,8 @@ public class HttpGetTask implements Callable {
     @Override
     public String call() throws Exception {
 
-        String json = "";
-        try {
-            DefaultHttpClient httpClient = new DefaultHttpClient();
-            HttpGet GetRequest = new HttpGet(url);
-
-            HttpResponse response = httpClient.execute(GetRequest);
-
-            BufferedReader br = new BufferedReader(
-                    new InputStreamReader((response.getEntity().getContent())));
-
-            String output;
-            while ((output = br.readLine()) != null) {
-                json = json.concat(output);
-                System.out.println(json);
-            }
-            httpClient.getConnectionManager().shutdown();
-
-        } catch (MalformedURLException e) {
-
-            e.printStackTrace();
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-
-        }
-        return json;
+        Client client = ClientBuilder.newClient();
+        WebTarget target = client.target(url);
+        return target.request(MediaType.APPLICATION_JSON).get(String.class);
     }
-
 }

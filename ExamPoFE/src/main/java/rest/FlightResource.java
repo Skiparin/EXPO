@@ -56,9 +56,10 @@ public class FlightResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String getFlightFrom(@PathParam("from") String FROM, @PathParam("date") String DATE,
             @PathParam("tickets") int TICKETS) {
-        List<Flight> flights = fif.getFlightByOrigin(FROM, DATE, TICKETS);
-        String jsonFlight = gson.toJson(flights);
-        return jsonFlight;
+//        List<Flight> flights = fif.getFlightByOrigin(FROM, DATE, TICKETS);
+//        String jsonFlight = gson.toJson(flights);
+//        return jsonFlight;
+        return null;
     }
 
     @GET
@@ -66,9 +67,10 @@ public class FlightResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String getFlightFromTo(@PathParam("from") String FROM, @PathParam("to") String TO, @PathParam("date") String DATE,
             @PathParam("tickets") int TICKETS) {
-        List<Flight> flights = fif.getFlight(FROM, TO, DATE, TICKETS);
-        String flight = gson.toJson(flights);
-        return flight;
+//        List<Flight> flights = fif.getFlight(FROM, TO, DATE, TICKETS);
+//        String flight = gson.toJson(flights);
+//        return flight;
+        return null;
     }
 
     @POST
