@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Entity\FlightInstance.class
 Entity\Flight_.class
 Ultil\Builder.class
@@ -20,3 +21,9 @@ Entity\Passenger_.class
 Facades\ReservationFacade.class
 Entity\Airport.class
 Facades\FlightInstanceFacade.class
+=======
+Entity\Passenger.class
+Entity\Reservation.class
+Entity\Flight.class
+rest\ApplicationConfig.class
+>>>>>>> ec1a5db9f2b113b0b9ade9917a67948c82b94c9c
