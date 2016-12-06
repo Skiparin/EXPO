@@ -108,34 +108,5 @@ public class GenericResource {
         json = json.concat(smarterJson + "]");
         return json;
     }
-    
-    @GET
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/get/{from}/{to}/{date}/{persons}")
-    public String getFlights(@PathParam("from") String FROM, @PathParam("to") String TO,
-            @PathParam("date") String DATE, @PathParam("persons") String PERSONS) {
-        List<Airline> list = facade.getAllAirlines();
-        List<Future<String>> futures = new ArrayList<>();
-        ExecutorService threadpool = Executors.newFixedThreadPool(list.size());
-        String params = FROM + "/" + TO + "/" + DATE + "/" + PERSONS;
-        String json = "[";
-
-        for (Airline airline : list) {
-            futures.add(threadpool.submit(new HttpGetTask(airline.getUrl() + params)));
-        }
-
-        String smarterJson = futures.stream().<String>map(future -> {
-            try {
-                return future.get();
-            } catch (Exception ex) {
-                throw new RuntimeException("");
-            }
-        }).parallel().collect(Collectors.joining(","));
-
-        json = json.concat(smarterJson + "]");
-        return json;
-
-    }
 
 }
