@@ -39,7 +39,6 @@ public class FlightIntegrationTest {
 
     @Test
     public void besicPingTest() {
-
-//given().when().get("http://localhost:8084/ExamPo/api/flight/get/CPH/SXF/2017-01-01T00:00:00.000Z/1").then().statusCode(200);
+        given().when().get("http://localhost:8084/ExamPo/api/flight/get/CPH/SXF/2017-01-01T00:00:00.000Z/1").then().statusCode(200);
     }
 }

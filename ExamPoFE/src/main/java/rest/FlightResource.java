@@ -7,6 +7,7 @@ package rest;
 
 import Entity.Flight;
 import Entity.Reservation;
+import Facades.AirlineFacade;
 import Facades.FlightFacade;
 import Facades.FlightInstanceFacade;
 import Facades.ReservationFacade;
@@ -19,7 +20,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import com.google.gson.Gson;
-import java.util.List;
 import javax.ws.rs.Consumes;
 
 /**
@@ -27,10 +27,11 @@ import javax.ws.rs.Consumes;
  *
  * @author Thesoap
  */
-@Path("Flight")
+@Path("flight")
 public class FlightResource {
 
     private static final Gson gson = new Gson();
+    AirlineFacade facade = new AirlineFacade();
     ReservationFacade resFacade = new ReservationFacade();
     FlightFacade flightFacade = new FlightFacade();
     FlightInstanceFacade fif = new FlightInstanceFacade();
@@ -63,14 +64,11 @@ public class FlightResource {
     }
 
     @GET
-    @Path("{from}/{to}/{date}/{tickets}")
+    @Path("/get/{from}/{to}/{date}/{tickets}")
     @Produces(MediaType.TEXT_PLAIN)
     public String getFlightFromTo(@PathParam("from") String FROM, @PathParam("to") String TO, @PathParam("date") String DATE,
             @PathParam("tickets") int TICKETS) {
-//        List<Flight> flights = fif.getFlight(FROM, TO, DATE, TICKETS);
-//        String flight = gson.toJson(flights);
-//        return flight;
-        return null;
+        return gson.toJson(facade.getAirlinesWithFlights(FROM, TO, DATE, TICKETS));
     }
 
     @POST

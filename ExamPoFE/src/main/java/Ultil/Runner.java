@@ -53,8 +53,10 @@ public class Runner {
         
         Flight flight1 = new Flight();
         flight1.setFlightNumber("2");
-        flight1.setFlightTime(16);
+        flight1.setFlightTime("2017-01-01T15:00:00.000Z");
         flight1.setNumberOfSeats(6);
+        flight1.setDestination(airport1);
+        flight1.setOrigin(airport1);
         FF.addFlight(flight1);
         FF.addAirline(airline1, flight1);
         FF.addDestination(airport2, flight1);
@@ -64,7 +66,7 @@ public class Runner {
         flightinstance1.setAvaiableSeats("2");
         flightinstance1.setDate("2. maj");
         flightinstance1.setPrice(500);
-        flightinstance1.setTime("11:11:2016");
+        flightinstance1.setTime("2017-01-01T15:00:00.000Z");
         FIF.addFlightInstance(flightinstance1);
         FIF.addFlight(flight1, flightinstance1);
         

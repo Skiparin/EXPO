@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\Entity\Airport.java
 C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\Facades\AirlineFacade.java
 C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\Facades\PassengerFacade.java
@@ -16,6 +17,8 @@ C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\Ultil\Builder.java
 C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\Facades\AirportFacade.java
 C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\Facades\ReservationFacade.java
 =======
+=======
+>>>>>>> 2e88383825f163c1cde4e808b6d18e6deb179b54
 C:\Users\Orvur\Documents\NetBeansProjects\EXPO\ExamPoFE\src\main\java\Facades\FlightInstanceFacade.java
 C:\Users\Orvur\Documents\NetBeansProjects\EXPO\ExamPoFE\src\main\java\Facades\FlightFacade.java
 C:\Users\Orvur\Documents\NetBeansProjects\EXPO\ExamPoFE\src\main\java\Facades\PassengerFacade.java
@@ -32,4 +35,25 @@ C:\Users\Orvur\Documents\NetBeansProjects\EXPO\ExamPoFE\src\main\java\Entity\Air
 C:\Users\Orvur\Documents\NetBeansProjects\EXPO\ExamPoFE\src\main\java\Entity\Passenger.java
 C:\Users\Orvur\Documents\NetBeansProjects\EXPO\ExamPoFE\src\main\java\Facades\ReservationFacade.java
 C:\Users\Orvur\Documents\NetBeansProjects\EXPO\ExamPoFE\src\main\java\Entity\Airport.java
+<<<<<<< HEAD
 >>>>>>> 4a1ea3217deacd9700e0d29f8a94d2c525d2f598
+=======
+=======
+C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\Entity\Airport.java
+C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\Facades\AirlineFacade.java
+C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\Facades\PassengerFacade.java
+C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\Entity\Reservation.java
+C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\Entity\Flight.java
+C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\Facades\FlightInstanceFacade.java
+C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\Entity\FlightInstance.java
+C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\Facades\FlightFacade.java
+C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\Ultil\Runner.java
+C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\rest\FlightResource.java
+C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\rest\ApplicationConfig.java
+C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\Entity\Passenger.java
+C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\Entity\Airline.java
+C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\Ultil\Builder.java
+C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\Facades\AirportFacade.java
+C:\Users\Oliver\EXPO\ExamPoFE\src\main\java\Facades\ReservationFacade.java
+>>>>>>> ec1a5db9f2b113b0b9ade9917a67948c82b94c9c
+>>>>>>> 2e88383825f163c1cde4e808b6d18e6deb179b54

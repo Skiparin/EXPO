@@ -11,10 +11,17 @@
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/airline?zeroDateTimeBehavior=convertToNull"/>
 =======
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Airline?zeroDateTimeBehavior=convertToNull"/>
 >>>>>>> 4a1ea3217deacd9700e0d29f8a94d2c525d2f598
+=======
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Airline?zeroDateTimeBehavior=convertToNull"/>
+=======
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/airline?zeroDateTimeBehavior=convertToNull"/>
+>>>>>>> ec1a5db9f2b113b0b9ade9917a67948c82b94c9c
+>>>>>>> 2e88383825f163c1cde4e808b6d18e6deb179b54
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value=""/>

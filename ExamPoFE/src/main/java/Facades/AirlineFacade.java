@@ -6,9 +6,12 @@
 package Facades;
 
 import Entity.Airline;
+import Entity.Flight;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -41,6 +44,30 @@ public class AirlineFacade {
         } else {
             return null;
         }
+    }
+    
+    public List<Airline> getAirlinesWithFlights(String FROM, String TO, String DATE, int TICKETS){
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Airline> airlines = (TypedQuery<Airline>) em.createNativeQuery("SELECT * FROM airline", Airline.class);
+        List<Airline> list = airlines.getResultList();
+        for (Airline airline : list) {
+            System.out.println("----------------------------------------------------------");
+            System.out.println(airline);
+            System.out.println(airline.getFlights());
+        }
+        list = removeFlights(list, FROM, TO, DATE, TICKETS);
+        return list;
+    }
+    
+    public List<Airline> removeFlights(List<Airline> list, String FROM, String TO, String DATE, int TICKETS){
+        for (Airline airline : list) {
+            for (Flight flight : airline.getFlights()) {
+                if(!(flight.getOrigin().equals(FROM) && flight.getDestination().equals(TO) && flight.getFlightTime().equals(DATE) && flight.getNumberOfSeats() >= TICKETS)){
+                    airline.getFlights().remove(flight);
+                }
+            }
+        }
+        return list;
     }
     
     
