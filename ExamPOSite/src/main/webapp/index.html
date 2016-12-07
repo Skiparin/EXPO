@@ -21,7 +21,6 @@
     </head>
     <body>
 
-
         <section class="menu-bg">
             <div class="container">
                 <div class="row">
@@ -147,15 +146,23 @@
                 });
 
                 $('#startDate').daterangepicker({
+                    format: 'yyyy/mm/dd',
                     singleDatePicker: true,
-                    startDate: moment().subtract(3, 'days')
+                    startDate: moment().subtract(3, 'days'),
+                            locale: {
+            format: 'YYYY-MM-DD'
+        }
                 });
                 
 
 
                 $('#endDate').daterangepicker({
+                    format: 'yyyy/mm/dd',
                     singleDatePicker: true,
-                    startDate: moment()
+                    startDate: moment(),
+                            locale: {
+            format: 'YYYY-MM-DD'
+        }
                 });
 
                 updateConfig();

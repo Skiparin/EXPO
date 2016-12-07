@@ -19,11 +19,12 @@ app.controller("indexController", ["$http", "$scope", function ($http, $scope) {
         self.getData = function() {
             self.passenger = document.getElementById("count");
             console.log("Hej")
-            $http.get('http://localhost:8080/ExamPo/flight/get/'+self.origin+'/'+self.destination+'/'+self.date.value+'/'+self.passenger.value)
+            $http.get('http://airline-plaul.rhcloud.com/api/flightinfo/'+self.origin+'/'+self.destination+'/'+self.date.value+'T00:00:00.000Z/'+self.passenger.value)
                     .success(function (data, status, headers, config) {
-                        $scope.data = data;
+                        Access-Control-Allow-Origin: *
+                        self.data = data;
                         console.log("Hej")
-                        console.log(data[0]);
+                        console.log(data);
                         console.log(status);
                     })
                     .error(function (data, status, headers, config) {
@@ -31,7 +32,11 @@ app.controller("indexController", ["$http", "$scope", function ($http, $scope) {
                     })
         };
 
-
+app.config(['$httpProvider', function($httpProvider) {
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    }
+]);
 
     }]);
 
