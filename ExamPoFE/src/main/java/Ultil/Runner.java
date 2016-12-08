@@ -17,6 +17,8 @@ import Facades.FlightFacade;
 import Facades.FlightInstanceFacade;
 import Facades.PassengerFacade;
 import Facades.ReservationFacade;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -80,8 +82,14 @@ public class Runner {
         passenger1.setLastName("Hansen");
         PF.addPassenger(passenger1);
         PF.addReservation(reservation1, passenger1);
-    }
-    
+        
+        //test removeFlights
+        List<Airline> list = new ArrayList();
+        int TICKETS = 1; 
+        AF.removeFlights(list, airline1.getName(), airline1.getName(), flight1.getFlightTime(), TICKETS);
+        System.out.println(AF.removeFlights(list, airline1.getName(), airline1.getName(), flight1.getFlightTime(), TICKETS));
+        
+    }    
     public static void main(String[] args) {
         AirportFacade AF = new AirportFacade();
         AirlineFacade ALF = new AirlineFacade();
@@ -108,7 +116,11 @@ public class Runner {
 //        
 //        Passenger passenger = new Passenger();
 //        passenger.setFirstName("Kim");
-//        PF.addPassenger(passenger);
+//        PF.addPassenge
+
+        // FF.addDestination(airport, flight);
+        
+        // FF.addAirline(airline, flight);r(passenger);
 //        
 //        Reservation reservation = new Reservation();
 //        reservation.setTotalPrice(200);

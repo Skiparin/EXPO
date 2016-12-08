@@ -37,39 +37,39 @@ public class GenericResourceTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of getFlights method, of class GenericResource.
-     */
-    @Test
-    public void testGetFlights_3args() {
-        System.out.println("getFlights");
-        String FROM = "";
-        String DATE = "";
-        String PERSONS = "";
-        GenericResource instance = new GenericResource();
-        String expResult = "";
-        String result = instance.getFlights(FROM, DATE, PERSONS);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getFlights method, of class GenericResource.
-     */
-    @Test
-    public void testGetFlights_4args() {
-        System.out.println("getFlights");
-        String FROM = "";
-        String TO = "";
-        String DATE = "";
-        String PERSONS = "";
-        GenericResource instance = new GenericResource();
-        String expResult = "";
-        String result = instance.getFlights(FROM, TO, DATE, PERSONS);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    /**
+//     * Test of getFlights method, of class GenericResource.
+//     */
+//    @Test
+//    public void testGetFlights_3args() {
+//        System.out.println("getFlights");
+//        String FROM = "";
+//        String DATE = "";
+//        String PERSONS = "";
+//        GenericResource instance = new GenericResource();
+//        String expResult = "";
+//        String result = instance.getFlights(FROM, DATE, PERSONS);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of getFlights method, of class GenericResource.
+//     */
+//    @Test
+//    public void testGetFlights_4args() {
+//        System.out.println("getFlights");
+//        String FROM = "";
+//        String TO = "";
+//        String DATE = "";
+//        String PERSONS = "";
+//        GenericResource instance = new GenericResource();
+//        String expResult = "";
+//        String result = instance.getFlights(FROM, TO, DATE, PERSONS);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
     
 }

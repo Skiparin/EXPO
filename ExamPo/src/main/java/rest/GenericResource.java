@@ -31,7 +31,7 @@ import javax.ws.rs.Consumes;
  *
  * @author Orvur
  */
-@Path("flight")
+@Path("flightinfo")
 public class GenericResource {
 
     private static final Gson gson = new Gson();

@@ -5,6 +5,7 @@
  */
 package rest;
 
+import Entity.Airline;
 import Entity.Flight;
 import Entity.Reservation;
 import Facades.AirlineFacade;
@@ -20,7 +21,14 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import com.google.gson.Gson;
+import java.util.ArrayList;
+import static java.util.Collections.list;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import javax.ws.rs.Consumes;
+import org.json.JSONObject;
 
 /**
  * REST Web Service
@@ -57,10 +65,13 @@ public class FlightResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String getFlightFrom(@PathParam("from") String FROM, @PathParam("date") String DATE,
             @PathParam("tickets") int TICKETS) {
-//        List<Flight> flights = fif.getFlightByOrigin(FROM, DATE, TICKETS);
-//        String jsonFlight = gson.toJson(flights);
-//        return jsonFlight;
-        return null;
+        List<Airline> list = flightFacade.getAllFlights();
+        String json = "[";
+        for (Airline flight : list) {
+            flight.getFlights();
+        }
+        json = gson.toJson(json.concat(list + "]"));
+        return json;
     }
 
     @GET
@@ -68,7 +79,11 @@ public class FlightResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String getFlightFromTo(@PathParam("from") String FROM, @PathParam("to") String TO, @PathParam("date") String DATE,
             @PathParam("tickets") int TICKETS) {
-        return gson.toJson(facade.getAirlinesWithFlights(FROM, TO, DATE, TICKETS));
+        List<Airline> list = flightFacade.getAllFlights();
+        String json = "[";
+        list.add( = facade.getAirlinesWithFlights(FROM, TO, DATE, TICKETS);
+        json = gson.toJson(json.concat(list + "]"));
+        return json;
     }
 
     @POST

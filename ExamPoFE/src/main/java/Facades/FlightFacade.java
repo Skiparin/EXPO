@@ -8,9 +8,11 @@ package Facades;
 import Entity.Airline;
 import Entity.Airport;
 import Entity.Flight;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -31,8 +33,8 @@ public class FlightFacade {
             em.close();
         }
     }
-    
-        public Flight getFlight(int ID) {
+
+    public Flight getFlight(int ID) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         Flight flight = em.find(Flight.class, ID);
@@ -80,4 +82,11 @@ public class FlightFacade {
         em.close();
         return flight;
     }
+
+    public List<Airline> getAllFlights() {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Airline> airlines = (TypedQuery<Airline>) em.createNativeQuery("SELECT * FROM flight", Airline.class);
+        return airlines.getResultList();
+    }
+    
 }
